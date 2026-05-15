@@ -60,3 +60,77 @@ docker network ls
 docker volume ls
 
 
+Kubernates
+
+Problems with hosting app direclt in containers
+
+1.Multiple host
+2.Manual healing (no Auto healing )
+3.No autoscaling .Manually scaling
+Docker is very simple it cannot support enterprise level means like loadbalancer ,firewall,autoscaling,autohealing,API gateway all of them cannot supported using this 
+
+So solution is K8s(Kubernetes)
+Kubernetes work on cluster (that is group of nodes) in master-slave form 
+always one master and n number of slaves 
+
+It solves the issues with docker 
+
+Suppose one node has 100 containers and one container is having memeory issue then kubernetes will 
+shift that containers to next node
+
+Autosacling is very easy here -We do replica setting (HPA).
+
+I will heal the damaged machine by using API server . 
+
+
+There are two things in Kubernetes 
+
+One is Controlplane whiche has 
+
+API server 
+etcd
+scheduler
+controller manager
+ccm
+cloud controller manager 
+
+Node=one machine that can be phsical server or cloud vm
+
+cluster=If there are multiple machines
+
+container is package of each app  that is isolated running application 
+
+pod : kubernetes  does not directly run the containers it runs in pods 
+
+kubernetes 
+
+pull image 
+create container from image
+wrap it inside pod
+
+If the containers belong together tightly then same pod 
+If no : seperate pods
+
+No of pods depends on how much traffic/load/fault tolerance do ineed ?
+More traffice more pods
+
+Commom production Pattern 
+1 pod -1app container 
+
+Many replicas of pods .
+
+pod 1 -app container
+pod 2 -db  container
+
+If i want more pods i can define this in kubernetes deployment.yaml 
+
+
+
+
+
+
+
+
+Containers are ephemeral
+
+
